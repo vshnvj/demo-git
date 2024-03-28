@@ -1,16 +1,24 @@
 name: Lighthouse CI
-on: 
- workflow_dispatch:
+on:
+  workflow_dispatch:
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v11
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
-          urls: |
-            https://example.com/
-            
-          budgetPath: ./budget.json # test performance budgets
-          uploadArtifacts: true # save results as an action artifacts
-          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
+          node-version: 18
+
+      - name: install lighthouse
+        run: npm install -g lighthouse
+
+      - name: Run Template URLs using Lighthouse
+        run: |
+          echo "::set-output name=date::$(date +'%d-%m-%Y')"
+          lighthouse https://www.perfmatrix.com/ui-performance-testing-tools/ --output=html --output-path=./report.html --save-assets
+
+      - name: Upload report
+        with:
+          name: Results-${{ steps.date.outputs.date }}
+          path: ./report.html
