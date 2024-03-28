@@ -16,9 +16,12 @@ jobs:
       - name: Run Template URLs using Lighthouse
         run: |
           echo "::set-output name=date::$(date +'%d-%m-%Y')"
-          lighthouse https://www.perfmatrix.com/ui-performance-testing-tools/ --output=html --output-path=./report.html --save-assets
+          lighthouse https://www.perfmatrix.com/ui-performance-testing-tools/ --output=html --output-path=./report.html --save-assets 
 
-      - name: Upload report
+      - name: Upload Allure Results
+        uses: actions/upload-artifact@v2
+        if: ${{ always() }}
+        continue-on-error: true
         with:
           name: Results-${{ steps.date.outputs.date }}
           path: ./report.html
