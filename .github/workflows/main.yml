@@ -11,12 +11,13 @@ jobs:
           node-version: 18
 
       - name: install lighthouse
-        run: npm install -g lighthouse
+        run: |
+          npm install -g lighthouse
+          echo "::set-output name=date::$(date +'%d-%m-%Y')"
 
       - name: Run Template URLs using Lighthouse
         run: |
-          echo "::set-output name=date::$(date +'%d-%m-%Y')"
-          lighthouse https://www.perfmatrix.com/ui-performance-testing-tools/ --output=html --output-path=./report.html --save-assets 
+          lighthouse https://www.perfmatrix.com/ui-performance-testing-tools/ --output=html --output-path=./report.html --save-assets
 
       - name: Upload Allure Results
         uses: actions/upload-artifact@v2
