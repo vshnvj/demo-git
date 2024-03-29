@@ -22,7 +22,7 @@ jobs:
 
   
   ckb-planograms:
-    if: github.event.inputs.option == 'ckb-planograms' || github.event.inputs.option == 'Both'"
+    if: "github.event.inputs.option == 'ckb-planograms' || github.event.inputs.option == 'Both'"
     runs-on: ubuntu-latest
     steps:
       - run : |
