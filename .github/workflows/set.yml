@@ -1,16 +1,15 @@
-name: jvjn
-
+name: breberb
+run-name: Build Images All
 on:
- workflow_dispatch :
+  workflow_dispatch:
   
 jobs:
   ckb-users:
-    if: github.event.inputs.option == 'ckb-users' || github.event.inputs.option == 'Both'
-      run : |
+    if: "github.event.inputs.option == 'ckb-users' || github.event.inputs.option == 'Both'"
+    run : |
       echo "ckb-users"  
 
   
   ckb-planograms:
     if: github.event.inputs.option == 'ckb-planograms'
-      run : |
-      echo "ckb-planograms"  
+    run :  echo "ckb-planograms"  
