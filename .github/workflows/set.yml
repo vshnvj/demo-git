@@ -1,16 +1,16 @@
-name: CMS-PSR
+name: jvjn
 
 on:
  workflow_dispatch :
   
 jobs:
-  if: ${{ github.event.inputs.option == 'ckb-users' || github.event.inputs.option == 'Both' }}
-    ckb-users:
+  ckb-users:
+    if: github.event.inputs.option == 'ckb-users' || github.event.inputs.option == 'Both'
       run : |
-        echo "ckb-users"  
+      echo "ckb-users"  
 
-  if: ${{ github.event.inputs.option == 'ckb-planograms' }}
-    ckb-planograms:
-      needs: ckb-users
+  
+  ckb-planograms:
+    if: github.event.inputs.option == 'ckb-planograms'
       run : |
-        echo "ckb-planograms"  
+      echo "ckb-planograms"  
