@@ -6,6 +6,7 @@ on:
 jobs:
   ckb-users:
     if: "github.event.inputs.option == 'ckb-users' || github.event.inputs.option == 'Both'"
+    runs-on: ubuntu-latest
     steps:
       - run : |
           echo "ckb-users"  
@@ -13,6 +14,7 @@ jobs:
   
   ckb-planograms:
     if: github.event.inputs.option == 'ckb-planograms'
+    runs-on: ubuntu-latest
     steps:
       - run : |
           echo "ckb-planograms"  
