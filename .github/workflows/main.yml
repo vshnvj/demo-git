@@ -17,7 +17,7 @@ jobs:
 
       - name: Run Template URLs using Lighthouse
         run: |
-          lighthouse https://www.perfmatrix.com/ui-performance-testing-tools/ --output=html --output-path=./report.html --save-assets  --quiet --chrome-flags="--headless"  
+          lighthouse https://www.perfmatrix.com/ui-performance-testing-tools/ --preset=desktop   --screenEmulation.desktop--screenEmulation.width=1024 --screenEmulation.height=768 --screenEmulation.deviceScaleFactor=2  --output=html --output-path=./report.html --save-assets  --quiet --chrome-flags="--headless"  
 
       - name: Upload Allure Results
         uses: actions/upload-artifact@v2
