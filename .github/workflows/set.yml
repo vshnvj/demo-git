@@ -19,6 +19,7 @@ jobs:
     steps:
       - run : |
           echo "ckb-users"  
+          exit 1
 
   
   ckb-planograms:
