@@ -1,4 +1,4 @@
-name: breberb
+name: Adhoc - Build Images All
 run-name: Build Images All
 on:
   workflow_dispatch:
@@ -6,10 +6,13 @@ on:
 jobs:
   ckb-users:
     if: "github.event.inputs.option == 'ckb-users' || github.event.inputs.option == 'Both'"
-    run : |
-      echo "ckb-users"  
+    steps:
+      - run : |
+          echo "ckb-users"  
 
   
   ckb-planograms:
     if: github.event.inputs.option == 'ckb-planograms'
-    run :  echo "ckb-planograms"  
+    steps:
+      - run : |
+          echo "ckb-planograms"  
