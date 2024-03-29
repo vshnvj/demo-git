@@ -1,0 +1,16 @@
+name: CMS-PSR
+
+on:
+ workflow_dispatch :
+  
+jobs:
+  if: ${{ github.event.inputs.option == 'ckb-users' || github.event.inputs.option == 'Both' }}
+    ckb-users:
+      run : |
+        echo "ckb-users"  
+
+  if: ${{ github.event.inputs.option == 'ckb-planograms' }}
+    ckb-planograms:
+      needs: ckb-users
+      run : |
+        echo "ckb-planograms"  
