@@ -1,8 +1,17 @@
-name: Adhoc - Build Images All
+name: Adhoc 
 run-name: Build Images All
 on:
   workflow_dispatch:
-  
+    inputs: 
+      option: 
+        type: choice
+        required: true
+        description: Select Test
+        options:
+          - ckb-users
+          - ckb-planograms
+          - Both
+
 jobs:
   ckb-users:
     if: "github.event.inputs.option == 'ckb-users' || github.event.inputs.option == 'Both'"
