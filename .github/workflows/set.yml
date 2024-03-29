@@ -1,4 +1,4 @@
-name: Adhoc 
+name: Adhoc - Build Images All
 run-name: Build Images All
 on:
   workflow_dispatch:
@@ -22,7 +22,7 @@ jobs:
 
   
   ckb-planograms:
-    if: github.event.inputs.option == 'ckb-planograms'
+    if: github.event.inputs.option == 'ckb-planograms' || github.event.inputs.option == 'Both'"
     runs-on: ubuntu-latest
     steps:
       - run : |
