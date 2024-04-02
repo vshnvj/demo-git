@@ -29,6 +29,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Run CMS Test
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
       - name: ckb-users
         if: "github.event.inputs.ckb-users == 'true' || github.event.inputs.all == 'true'"   
         uses: ./.github/workflows/main.yml
