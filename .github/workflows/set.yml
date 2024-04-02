@@ -5,38 +5,41 @@ on:
     inputs: 
       ckb-users: 
         type: boolean
-        required: false
+        required: true
+        default: false
         description: Select Test ckb-users
       ckb-planograms: 
         type: boolean
-        required: false
+        required: true
+        default: false
         description: Select Test ckb-planograms
-      Both: 
+      ckb-stores: 
         type: boolean
-        required: false
+        required: true
+        default: false
+        description: Select Test ckb-stores
+      all:
+        type: boolean
+        required: true
+        default: false
         description: Select All Test 
 
 jobs:
-  ckb-users:
-    if: "github.event.inputs.ckb-users == 'true' || github.event.inputs.Both == 'true'"
-    runs-on: ubuntu-latest
-    steps:
-      - run : |
-          echo "ckb-users"  
-          
+  Run-Test:
+  runs-on: ubuntu-latest
+  name: Run CMS Test
+  steps:
 
-  
-  ckb-planograms:
-    if: "github.event.inputs.ckb-planograms == 'true'"
-    runs-on: ubuntu-latest
-    steps:
-      - run : |
-          echo "ckb-planograms"  
+    - name: ckb-users
+      if: "github.event.inputs.ckb-users == 'true' || github.event.inputs.all == 'true'"   
+      run: echo "${{ toJSON(github.event.inputs) }}users"
 
-  Both:
-    if: "github.event.inputs.Both == 'true'"
-    runs-on: ubuntu-latest
-    needs: ckb-users
-    steps:
-      - run : |
-          echo "Obly PLanograms" 
+    - name: ckb-planograms
+      if: "github.event.inputs.ckb-planograms == 'true' || github.event.inputs.all == 'true'"
+      run: echo "planograms"
+      
+    - name: ckb-stores
+      if: "github.event.inputs.ckb-stores == 'true' || github.event.inputs.all == 'true'"
+      run: echo "stores"
+     
+ 
