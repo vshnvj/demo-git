@@ -3,14 +3,18 @@ run-name: Build Images All
 on:
   workflow_dispatch:
     inputs: 
-      option: 
-        type: multi-choice
-        required: true
-        description: Select Test
-        options:
-          - ckb-users
-          - ckb-planograms
-          - Both
+      ckb-users: 
+        type: boolean
+        required: false
+        description: Select Test ckb-users
+      ckb-planograms: 
+        type: boolean
+        required: false
+        description: Select Test ckb-planograms
+      Both: 
+        type: boolean
+        required: false
+        description: Select All Test 
 
 jobs:
   ckb-users:
