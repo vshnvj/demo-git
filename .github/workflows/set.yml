@@ -26,20 +26,19 @@ on:
 
 jobs:
   Run-Test:
-  runs-on: ubuntu-latest
-  name: Run CMS Test
-  steps:
-
-    - name: ckb-users
-      if: "github.event.inputs.ckb-users == 'true' || github.event.inputs.all == 'true'"   
-      run: echo "${{ toJSON(github.event.inputs) }}users"
-
-    - name: ckb-planograms
-      if: "github.event.inputs.ckb-planograms == 'true' || github.event.inputs.all == 'true'"
-      run: echo "planograms"
-      
-    - name: ckb-stores
-      if: "github.event.inputs.ckb-stores == 'true' || github.event.inputs.all == 'true'"
-      run: echo "stores"
+    runs-on: ubuntu-latest
+    name: Run CMS Test
+    steps:
+      - name: ckb-users
+        if: "github.event.inputs.ckb-users == 'true' || github.event.inputs.all == 'true'"   
+        run: echo "${{ toJSON(github.event.inputs) }}users"
+  
+      - name: ckb-planograms
+        if: "github.event.inputs.ckb-planograms == 'true' || github.event.inputs.all == 'true'"
+        run: echo "planograms"
+        
+      - name: ckb-stores
+        if: "github.event.inputs.ckb-stores == 'true' || github.event.inputs.all == 'true'"
+        run: echo "stores"
      
  
