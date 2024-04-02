@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs: 
       option: 
-        type: choice
+        type: multi-choice
         required: true
         description: Select Test
         options:
