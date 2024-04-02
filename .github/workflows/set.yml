@@ -31,7 +31,7 @@ jobs:
     steps:
       - name: ckb-users
         if: "github.event.inputs.ckb-users == 'true' || github.event.inputs.all == 'true'"   
-        uses: vshnvj/demo-git/.github/workflows/main.yml
+        uses: ./.github/workflows/main.yml
   
       - name: ckb-planograms
         if: "github.event.inputs.ckb-planograms == 'true' || github.event.inputs.all == 'true'"
